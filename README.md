@@ -12,7 +12,7 @@ atau
 ```
 {
 	"require": {
-		"rizalafani/rajaongkirlaravel" : "dev-master"
+		"sholihin/rajaongkirprolaravel" : "dev-master"
 	}
 }
 ```
@@ -22,7 +22,7 @@ Tambahkan service provider ke config/app.php
 'providers' => [
 	....
 	
-	rizalafani\rajaongkirlaravel\RajaOngkirServiceProvider::class,
+	sholihin\rajaongkirprolaravel\RajaOngkirServiceProvider::class,
 ]
 ```
 
@@ -31,7 +31,7 @@ Tambahkan juga aliasnya ke config/app.php
 'aliases' => [
 	....
 	
-	'RajaOngkir' => rizalafani\rajaongkirlaravel\RajaOngkirFacade::class,
+	'RajaOngkir' => sholihin\rajaongkirprolaravel\RajaOngkirFacade::class,
 ]
 ```
 
@@ -109,13 +109,20 @@ Ambil data kota berdasarkan nama kota di suatu provinsi
 $data = RajaOngkir::Kota()->byProvinsi($provinsi_id)->search('city_name', $name)->get();
 ```
 
+Ambil data kecamatan berdasarkan kota
+```php
+$data = RajaOngkir::Kecamatan()->byCity($city_id)->get();
+```
+
 Ambil Biaya Pengiriman
 ```php
 $data = RajaOngkir::Cost([
-	'origin' 		=> 501, // id kota asal
-	'destination' 	=> 114, // id kota tujuan
-	'weight' 		=> 1700, // berat satuan gram
-	'courier' 		=> 'jne', // kode kurir pengantar ( jne / tiki / pos )
+	'origin' 		=> 501,
+	'originType' 		=> 'subdistrict',
+	'destination' 		=> 574,
+	'destinationType'	=> "subdistrict",
+	'weight'		=> 1700,
+	'courier'		=> 'jne'
 ])->get();
 ```
 

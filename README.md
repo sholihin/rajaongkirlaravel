@@ -6,7 +6,7 @@ API ini digunakan ( baru tersedia ) untuk type akun starter
 
 Download package dengan composer
 ```
-composer require rizalafani/rajaongkirlaravel
+composer require sholihin/rajaongkirprolaravel
 ```
 atau
 ```
